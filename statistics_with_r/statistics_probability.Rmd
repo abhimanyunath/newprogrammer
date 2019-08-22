@@ -29,5 +29,9 @@ copy r formula ctrl +shift + i
 ![](images/10.png)
 ![](images/11.png)
 
+```{r}
+data("present")
+View(present)
+```
 
 
