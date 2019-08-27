@@ -34,7 +34,7 @@ data("present")
 View(present)
 ```
 
-*Shortcuts**
+**Shortcuts**
 
 piping operator: ctrl + shift + m
 
@@ -67,6 +67,7 @@ arbuthnot <- arbuthnot %>%
   mutate(more_boys = boys > girls)
 ```
 
+
 ```{r}
 data(present)
 dim(present)
@@ -76,11 +77,14 @@ Calculate the total number of births for each year and store these values in a n
 True
 
 False
+```{r}
+present <- present %>% 
+mutate(total = boys + girls)%>% 
+mutate(prop_boys = boys/total)
 
-
+ggplot(data = present, aes(x = year, y = prop_boys)) + geom_line()
 
 ```
-
 
 Create a new variable called more_boys which contains the value of either TRUE if that year had more boys than girls, or FALSE if that year did not. Based on this variable which of the following statements is true?
 
@@ -94,7 +98,7 @@ Half of the years there are more boys born, and the other half more girls born.
 present <- present %>%
 mutate(more_boys = boys > girls)
 
-c
+ggplot(data = present, aes(x = year, y = more_boys)) + geom_line()
 ```
 
 Calculate the boy-to-girl ratio each year, and store these values in a new variable called prop_boy_girl in the  present dataset. Plot these values over time. Which of the following best describes the trend?
@@ -104,7 +108,6 @@ There appears to be no trend in the boy-to-girl ratio from 1940 to 2013.
 There is initially an increase in boy-to-girl ratio, which peaks around 1960. After 1960 there is a decrease in the boy-to-girl ratio, but the number begins to increase in the mid 1970s.
 
 There is initially a decrease in the boy-to-girl ratio, and then an increase between 1960 and 1970, followed by a decrease.
-
 The boy-to-girl ratio has increased over time.
 
 There is an initial decrease in the boy-to-girl ratio born but this number appears to level around 1960 and remain constant since then.
@@ -114,9 +117,4 @@ present <- present %>%
 mutate(prop_boy_girl = boys/girls)
 
 ggplot(data = present, aes(x = year, y = prop_boy_girl)) + geom_line()
-```
-
-```{r}
-ggplot(data = present, aes(x = year, y = total)) + geom_line() + geom_point()
-
 ```
