@@ -245,6 +245,11 @@ this data frame as `sfo_feb_flights`. How many flights meet these criteria?
 ```{r sfo-feb-flights}
 # type your code for Question 1 here, and Knit
 
+sfo_feb_flights <- nycflights %>%
+  filter(dest == "SFO", month == 2)
+
+sfo_feb_flights %>%
+  summarise(n = n())
 ```
 
 
@@ -260,7 +265,8 @@ delays of `sfo_feb_flights`. Which of the following is false?
 
 ```{r sfo-feb-flights-arrival-delays}
 # type your code for Question 2 here, and Knit
-
+ggplot(data = sfo_feb_flights, aes(x = arr_delay)) +
+  geom_histogram(binwidth = 10)
 ```
 
 Another useful functionality is being able to quickly calculate summary 
@@ -484,3 +490,5 @@ were `"delayed"` departing arrive `"on time"`?
 # type your code for Question 10 here, and Knit
 
 ```
+
+
