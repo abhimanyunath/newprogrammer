@@ -1,0 +1,215 @@
+---
+title: "Part I Explorer"
+output:
+  html_document:
+    df_print: paged
+---
+# Chapter 3 : Introduction
+
+install.packages("tidyverse")
+
+library(tidyverse)
+
+Data-Frame > mpg
+
+```{r}
+library(tidyverse)
+
+```
+
+```{r}
+?mpg
+
+```
+
+```{r}
+ggplot(data = mpg, aes(x = displ, y = hwy)) +
+  geom_point(size = 0.5) + geom_smooth()
+
+
+```
+
+3.2.4 Exercises
+Run ggplot(data = mpg). What do you see? BLANK
+
+How many rows are in mpg? How many columns? 234, 11
+
+What does the drv variable describe? Read the help for ?mpg to find out. f = front-wheel drive, r = rear wheel drive, 4 = 4wd
+
+Make a scatterplot of hwy vs cyl.
+
+What happens if you make a scatterplot of class vs drv? Why is the plot not useful?
+
+```{r}
+ggplot(data = mpg)
+```
+
+structure of data mpg
+```{r}
+str(mpg)
+```
+
+
+Make a scatterplot of hwy vs cyl
+```{r}
+ggplot(data = mpg, aes(x = hwy, y = cyl)) +
+  geom_point(size = 0.5) 
+```
+
+What happens if you make a scatterplot of class vs drv? Why is the plot not useful?
+
+two variable are factor variable
+
+```{r}
+ggplot(data = mpg, aes(x = class, y = drv)) +
+  geom_point() 
+```
+while defining color it should be in aes(color = class).... 
+```{r}
+ggplot(data = mpg, aes(x = displ, y = hwy)) +
+  geom_point(size = 1, aes(color = class))
+```
+
+
+```{r}
+ggplot(data = mpg, aes(x = displ, y = hwy)) +
+  geom_point(aes(size = class))
+```
+
+```{r}
+ggplot(data = mpg, aes(x = displ, y = hwy)) +
+  geom_point(color = "green")
+```
+
+
+```{r}
+ggplot(data = mpg, aes(x = displ, y = hwy)) +
+  geom_point(aes(shape = class))
+```
+
+```{r}
+ggplot(data = mpg, aes(x = displ, y = hwy, alpha = class)) +
+  geom_point()
+```
+
+```{r}
+ggplot(data = mpg, aes(x = displ, y = hwy)) +
+  geom_point(shape = 22)
+```
+
+
+What’s gone wrong with this code? Why are the points not blue?
+
+blue  should not be within aes as it is not defining a particular variable 
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, color = "blue"))
+```
+
+Which variables in mpg are categorical? Which variables are continuous? (Hint: type ?mpg to read the documentation for the dataset). How can you see this information when you run mpg?
+
+
+manufacturer
+model----- catergorical
+model name  ---- categorical
+
+displ
+engine displacement, in litres----continuous
+
+year
+year of manufacture---- categorical
+
+cyl
+number of cylinders----- continuous
+
+trans
+type of transmission----- categorical
+
+drv
+f = front-wheel drive, r = rear wheel drive, 4 = 4wd----categorical
+
+cty
+city miles per gallon---- continuous
+
+hwy
+highway miles per gallon ---- continuous
+
+fl
+fuel type---- categorical
+
+class
+"type" of car----- categorical
+```{r}
+str(mpg)
+```
+
+
+-------------------------------------------------------------------------
+Map a continuous variable to color, size, and shape. How do these aesthetics behave differently for categorical vs. continuous variables?
+
+```{r}
+ggplot(data = mpg) + geom_point(aes(x = displ, y = hwy, color = class, size = class, shape = class))
+```
+
+
+
+
+
+
+What happens if you map the same variable to multiple aesthetics?
+
+```{r}
+ggplot(data = mpg, aes(x = cty, y = cty)) +
+  geom_point()
+```
+
+What does the stroke aesthetic do? What shapes does it work with? (Hint: use ?geom_point)
+
+-- stroke asthetic is used to modify the width of the border.
+```{r}
+ggplot(data = mpg, aes(x = displ, y = hwy)) +
+  geom_point(size = 5, shape = 6, stroke = 3)
+```
+
+
+6. 
+What happens if you map an aesthetic to something other than a variable name, like aes(colour = displ < 5)? Note, you’ll also need to specify x and y.
+
+ans:
+```{r}
+ggplot(data = mpg, aes(x = displ, y = hwy)) +
+  geom_point(size = 1, aes(color = displ < 5 ))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

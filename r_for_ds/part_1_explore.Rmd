@@ -1,7 +1,6 @@
 ---
 title: "Part I Explorer"
-output: 
-  html_document
+output: html_notebook
 ---
 # Chapter 3 : Introduction
 
@@ -12,8 +11,80 @@ library(tidyverse)
 Data-Frame > mpg
 
 ```{r}
+mpg
 
 ```
+
+```{r}
+?mpg
+
+```
+
+```{r}
+ggplot(data = mpg, aes(x = displ, y = hwy)) +
+  geom_point(size = 0.5) + geom_smooth()
+
+
+```
+
+3.2.4 Exercises
+Run ggplot(data = mpg). What do you see? BLANK
+
+How many rows are in mpg? How many columns? 234, 11
+
+What does the drv variable describe? Read the help for ?mpg to find out. f = front-wheel drive, r = rear wheel drive, 4 = 4wd
+
+Make a scatterplot of hwy vs cyl.
+
+What happens if you make a scatterplot of class vs drv? Why is the plot not useful?
+
+```{r}
+ggplot(data = mpg)
+```
+
+structure of data mpg
+```{r}
+str(mpg)
+```
+
+
+Make a scatterplot of hwy vs cyl
+```{r}
+ggplot(data = mpg, aes(x = hwy, y = cyl)) +
+  geom_point(size = 0.5) 
+```
+
+What happens if you make a scatterplot of class vs drv? Why is the plot not useful?
+
+two variable are factor variable
+
+```{r}
+ggplot(data = mpg, aes(x = class, y = drv)) +
+  geom_point() 
+```
+while defining color it should be in aes(color = class).... 
+```{r}
+ggplot(data = mpg, aes(x = displ, y = hwy)) +
+  geom_point(size = 1, aes(color = class))
+```
+
+
+```{r}
+ggplot(data = mpg, aes(x = displ, y = hwy)) +
+  geom_point(size = class)
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
