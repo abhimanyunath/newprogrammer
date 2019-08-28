@@ -1,5 +1,19 @@
 ---
 title: "Part I Explorer"
-output: html_document:
+output: 
+  html_document
 ---
+# Chapter 3 : Introduction
+
+install.packages("tidyverse")
+
+library(tidyverse)
+
+Data-Frame > mpg
+
+```{r}
+
+```
+
+
 
